@@ -89,12 +89,13 @@
                     @endif
                     !
                 </h1>
-                <div class="links">
-                    <a href="{{route('home')}}">Home</a>
-                    <a href="{{route('saludar')}}">Saludar</a>
-                    <a href="{{route('saludar',['nombre'=>'Koldo'])}}">Saluda a Koldo</a>
-                    <a href="{{route('saludar',['nombre'=>'Koldo','color'=>'f56042'])}}">Saludar a Koldo en rojo</a>
-                </div>
+            </div>
+            <div class="links">
+                <a href="{{route('home')}}">Home</a>
+                <a href="{{route('saludar')}}">Saludar</a>
+                <a href="{{route('saludar',['nombre'=>'Koldo'])}}">Saluda a Koldo</a>
+                <a href="{{route('saludar',['nombre'=>'Koldo','color'=>'f56042'])}}">Saludar a Koldo en rojo</a>
+                <a href="{{route('saludar',['nombre'=>'Koldo','color'=>'428df5'])}}">Saludar a Koldo en azul</a>
             </div>
         </div>
     </body>

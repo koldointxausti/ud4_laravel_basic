@@ -11,5 +11,19 @@
 |
 */
 
-Route::get('/', function () {return view('welcome');})->name('home');
-Route::get('/contacto', function () {return view('contacto');})->name('contacto');
+Route::get('/', function () {
+	return view('welcome');
+})->name('home');
+
+// 4.1
+Route::get('/contacto', function () {
+	return view('contacto');
+})->name('contacto');
+
+Route::get('/blog/{id}', function ($id){
+	return view('blog',['id'=>$id]);
+})->where(['id'=>'[0-9]'])->name('blog');
+
+Route::get('/blog/{id}-{name}', function ($id, $name) {
+	return view('blog',['id'=>$id, 'name'=>$name]);
+})->where(['id'=>'[0-9]+','name'=>'[A-Za-z]+'])->name('blog');

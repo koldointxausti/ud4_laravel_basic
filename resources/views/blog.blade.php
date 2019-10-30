@@ -78,24 +78,17 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="title">
-                <h1>Contacto</h1>
+                <h1>Este es el artículo numero {{$id}}</h1>
                 <div class="links">
                     <a href="{{route('home')}}">Home</a>
-                    <a href="{{route('blog',['id'=>3,'name'=>'Koldo'])}}">Blog</a>
+                    <a href="{{route('contacto')}}">Contacto</a>
                 </div>
             </div>
-            <div class="content">
-                <ul>
-                    <li>
-                        <strong>Nombre:</strong>
-                        Koldo
-                    </li>
-                    <li>
-                        <strong>Apellido:</strong>
-                        Intxausti
-                    </li>
-                </ul>
-            </div>
+            @if(isset($name))
+                <div class="content">
+                    El id {{$id}}, corresponde a {{$name}}.
+                </div>
+            @endif
         </div>
     </body>
 </html>

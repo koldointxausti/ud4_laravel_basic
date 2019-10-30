@@ -28,6 +28,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                flex-direction: column;
             }
 
             .position-ref {
@@ -41,7 +42,10 @@
             }
 
             .content {
-                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
 
             .links > a {
@@ -53,17 +57,34 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
+
+            .title{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            .title h1{
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 36px;
+                font-weight: lighter;
+                letter-spacing: .3rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <div class="content">
+            <div class="title">
+                <h1>Contacto</h1>
                 <div class="links">
-                    <a href="{{route('contacto')}}">4.1 Rutas y Vistas</a>
-                    <a href="#">4.2 Rutas Vista Controlador</a>
-                    <a href="#">4.3 Formularios</a>
-                    <a href="#">4.4 Formularios con validación</a>
+                    <a href="{{route('home')}}">Home</a>
                 </div>
+            </div>
+            <div class="content">
+                
             </div>
         </div>
     </body>

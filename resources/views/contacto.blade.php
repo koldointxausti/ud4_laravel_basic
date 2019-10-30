@@ -81,7 +81,8 @@
                 <h1>Contacto</h1>
                 <div class="links">
                     <a href="{{route('home')}}">Home</a>
-                    <a href="{{route('blog',['id'=>3,'name'=>'Koldo'])}}">Blog</a>
+                    <a href="{{route('blog.id',['id'=>3])}}">Blog sin nombre</a>
+                    <a href="{{route('blog.name',['id'=>3,'name'=>'Koldo'])}}">Blog con nombre</a>
                 </div>
             </div>
             <div class="content">

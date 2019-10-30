@@ -15,6 +15,9 @@ Route::get('/', function () {
 	return view('welcome');
 })->name('home');
 
+Route::pattern('id', '[0-9]+');
+Route::pattern('nombre', '[A-Za-z]+');
+
 // 4.1
 Route::get('/contacto', function () {
 	return view('contacto');
@@ -22,8 +25,12 @@ Route::get('/contacto', function () {
 
 Route::get('/blog/{id}', function ($id){
 	return view('blog',['id'=>$id]);
-})->where(['id'=>'[0-9]'])->name('blog');
+})->name('blog.id'); 
+// para usar patrones de en una sola ruta ==>  where(['id'=>'[0-9]']);
 
 Route::get('/blog/{id}-{name}', function ($id, $name) {
 	return view('blog',['id'=>$id, 'name'=>$name]);
-})->where(['id'=>'[0-9]+','name'=>'[A-Za-z]+'])->name('blog');
+})->name('blog.name');
+
+// 4.2
+Route::get('/saludo/{nombre?}/{color?}','SaludoController@saludar')->name('saludar');

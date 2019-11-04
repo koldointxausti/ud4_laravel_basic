@@ -61,7 +61,7 @@
                 <div class="links">
                     <a href="{{route('contacto')}}">4.1 Rutas y Vistas</a>
                     <a href="{{route('saludar')}}">4.2 Rutas Vista Controlador</a>
-                    <a href="#">4.3 Formularios</a>
+                    <a href="{{route('getFormulario')}}">4.3 Formularios</a>
                     <a href="#">4.4 Formularios con validación</a>
                 </div>
             </div>

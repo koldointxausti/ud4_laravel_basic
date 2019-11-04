@@ -47,7 +47,6 @@
                 align-items: center;
                 justify-content: center;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -59,14 +58,14 @@
             }
 
             .title{
-                display: grid;
-                grid-template-columns: 50% 50%;
+                display: flex;
+                flex-direction: row;
                 align-items: center;
                 justify-content: center;
+                margin-bottom: 1%;
             }
             .title h1{
                 color: #636b6f;
-                text-align: center;
                 padding: 0 25px;
                 font-size: 36px;
                 font-weight: lighter;
@@ -79,39 +78,16 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="title">
-                
-                @php
-                    $json_saludos = file_get_contents(base_path('resources/js/saludos.json'));
-                    $saludos = json_decode($json_saludos);
-                @endphp
-
-                @foreach($saludos as $saludo)
-                <h1
-                    @if(isset($color))
-                        style="color:#{{$color}}"
-                    @endif
-                >
-                    {{$saludo}}
-
-                    @if(isset($nombre))
-                        {{$nombre}}
-                    @endif
-                    !
-                </h1>
-                @endforeach
+                <h1>Introduce tu nombre</h1>
+                <div class="links">
+                    <a href="{{route('home')}}">Home</a>
+                </div>
             </div>
-            <div class="links">
-                @php
-                    // da un valor por defecto al nombre
-                    if(!isset($nombre)) $nombre = "koldo";
-                @endphp
-                <a href="{{route('home')}}">Home</a>
-                <a href="{{route('saludar')}}">Saludar</a>
-                <a href="{{route('saludar',['nombre'=>$nombre])}}">Saluda a {{$nombre}}</a>
-                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'f56042'])}}">Saludar a {{$nombre}} en rojo</a>
-                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'428df5'])}}">Saludar a {{$nombre}} en azul</a>
-            </div>
+            <form action="{{route('saludarEspecif')}}" method="get">
+                @csrf
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="submit" value="Saludar">
+            </form>
         </div>
     </body>
 </html>
-

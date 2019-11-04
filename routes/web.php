@@ -34,3 +34,7 @@ Route::get('/blog/{id}-{name}', function ($id, $name) {
 
 // 4.2
 Route::get('/saludo/{nombre?}/{color?}','SaludoController@saludar')->name('saludar');
+
+// 4.3
+Route::get('/formulario','SaludoController@getFormulario')->name('getFormulario');
+Route::get('/saludarEspecif','SaludoController@saludarEspecif')->name('saludarEspecif');

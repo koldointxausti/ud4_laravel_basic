@@ -128,7 +128,7 @@
             @if(isset($nombre) && isset($apellido))
             <div id="datos-formulario">
                 @php
-                    $json_saludos = file_get_contents(base_path('resources/js/saludos.json'));
+                    $json_saludos = file_get_contents(base_path('database/saludos.json'));
                     $saludos = json_decode($json_saludos);
                 @endphp
                 @foreach($saludos as $saludo)

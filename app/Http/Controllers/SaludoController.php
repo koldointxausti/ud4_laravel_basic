@@ -15,7 +15,13 @@ class SaludoController extends Controller
     function getFormulario(){
     	return view('formulario');
     }
-    function saludarEspecif(){
-    	return view('saludo',['nombre'=>request('nombre'),'apellido'=>request('apellido')]);
+    function saludarGet(){
+    	return $this->saludar(request('nombre'),request('apellido'));
+    }
+    function saludarPost(Request $request){
+        return $this->saludar($request->nombre,$request->apellido);
+    }
+    function saludarSamePage(Request $request){
+        return view('formulario',['nombre'=>$request->nombre,'apellido'=>$request->apellido]);
     }
 }

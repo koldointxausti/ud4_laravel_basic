@@ -19,7 +19,6 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
@@ -73,22 +72,70 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
+            form{
+                margin-bottom: 2em;
+            }
+            #datos-formulario{
+                display: grid;
+                grid-template-columns: 50% 50%;
+                align-items: center;
+                justify-content: center;
+            }
+            #datos-formulario > h2{
+                color: #636b6f;
+                text-align: center;
+                padding: 0 25px;
+                font-size: 36px;
+                font-weight: lighter;
+                letter-spacing: .3rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            #datos-formulario > h2 > span{
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center">
             <div class="title">
                 <h1>Introduce tu nombre</h1>
                 <div class="links">
                     <a href="{{route('home')}}">Home</a>
                 </div>
             </div>
-            <form action="{{route('saludarEspecif')}}" method="get">
+            <form action="{{route('saludarGet')}}" method="get">
                 @csrf
+                <h3>GET</h3>
                 <input type="text" name="nombre" placeholder="Nombre">
                 <input type="text" name="apellido" placeholder="Apellido">
                 <input type="submit" value="Saludar">
             </form>
+            <form action="{{route('saludarPost')}}" method="post">
+                @csrf
+                <h3>POST</h3>
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="submit" value="Saludar">
+            </form>
+            <form action="{{route('saludarSamePage')}}" method="post">
+                @csrf
+                <h3>POST EN LA MISMA PÁGINA</h3>
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="submit" value="Saludar">
+            </form>
+            @if(isset($nombre) && isset($apellido))
+            <div id="datos-formulario">
+                @php
+                    $json_saludos = file_get_contents(base_path('resources/js/saludos.json'));
+                    $saludos = json_decode($json_saludos);
+                @endphp
+                @foreach($saludos as $saludo)
+                    <h2>{{$saludo}} <span>{{$nombre}} {{$apellido}}</span> !</h2>
+                @endforeach
+            </div>
+            @endif
         </div>
     </body>
 </html>

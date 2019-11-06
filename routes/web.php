@@ -37,6 +37,8 @@ Route::get('/saludo/{nombre?}/{apellido?}/{color?}','SaludoController@saludar')-
 
 // 4.3
 Route::get('/formulario','SaludoController@getFormulario')->name('getFormulario');
-Route::get('/saludarEspecif','SaludoController@saludarEspecif')->name('saludarEspecif');
+Route::get('/saludar/get','SaludoController@saludarGet')->name('saludarGet');
+Route::post('/saludar/post','SaludoController@saludarPost')->name('saludarPost');
+Route::post('/saludar/samePage','SaludoController@saludarSamePage')->name('saludarSamePage');
 
 // 4.4

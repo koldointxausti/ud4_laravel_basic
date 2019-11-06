@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 class SaludoController extends Controller
 {
     // 4.2
-    function saludar($nombre = null, $color = null){
-    	if(!$nombre && !$color) return view('saludo');
-		else if(!$nombre) return view('saludo',['nombre'=>$nombre]);
-		else return view('saludo',['nombre'=>$nombre,'color'=>$color]);
+    function saludar($nombre = null,$apellido=null, $color = null){
+        return view('saludo',['nombre'=>$nombre,'color'=>$color, 'apellido'=>$apellido]);
     }
 
     // 4.3
@@ -18,6 +16,6 @@ class SaludoController extends Controller
     	return view('formulario');
     }
     function saludarEspecif(){
-    	return $this->saludar(request('nombre'));
+    	return view('saludo',['nombre'=>request('nombre'),'apellido'=>request('apellido')]);
     }
 }

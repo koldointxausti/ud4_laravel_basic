@@ -86,6 +86,7 @@
             <form action="{{route('saludarEspecif')}}" method="get">
                 @csrf
                 <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
                 <input type="submit" value="Saludar">
             </form>
         </div>

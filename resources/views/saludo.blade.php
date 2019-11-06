@@ -93,8 +93,11 @@
                 >
                     {{$saludo}}
 
-                    @if(isset($nombre))
+                    @if(isset($nombre) && $nombre)
                         {{$nombre}}
+                    @endif
+                    @if(isset($apellido))
+                        {{$apellido}}
                     @endif
                     !
                 </h1>
@@ -102,14 +105,14 @@
             </div>
             <div class="links">
                 @php
-                    // da un valor por defecto al nombre
+                    // da un valor por defecto al nombre e inicializa la variable apellido si no está definida
                     if(!isset($nombre)) $nombre = "koldo";
                 @endphp
                 <a href="{{route('home')}}">Home</a>
                 <a href="{{route('saludar')}}">Saludar</a>
-                <a href="{{route('saludar',['nombre'=>$nombre])}}">Saluda a {{$nombre}}</a>
-                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'f56042'])}}">Saludar a {{$nombre}} en rojo</a>
-                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'428df5'])}}">Saludar a {{$nombre}} en azul</a>
+                <a href="{{route('saludar',['nombre'=>$nombre,'apellido'=>$apellido])}}">Saluda a {{$nombre}} {{$apellido}}</a>
+                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'f56042','apellido'=>$apellido])}}">Saludar a {{$nombre}} {{$apellido}} en rojo</a>
+                <a href="{{route('saludar',['nombre'=>$nombre,'color'=>'428df5','apellido'=>$apellido])}}">Saludar a {{$nombre}} {{$apellido}} en azul</a>
             </div>
         </div>
     </body>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Contacto</title>
+        <title>Formulario de Contacto</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -19,7 +19,6 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
@@ -47,7 +46,6 @@
                 align-items: center;
                 justify-content: center;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -63,6 +61,7 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
+                margin-bottom: 1%;
             }
             .title h1{
                 color: #636b6f;
@@ -73,48 +72,50 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-            .bold{
-                font-weight: bold; 
-                margin-right: .5em;
+            form{
+                margin-bottom: 2em;
+            }
+            #datos-formulario{
+                display: grid;
+                grid-template-columns: 50% 50%;
+                align-items: center;
+                justify-content: center;
+            }
+            #datos-formulario > h2{
+                color: #636b6f;
+                text-align: center;
+                padding: 0 25px;
+                font-size: 36px;
+                font-weight: lighter;
+                letter-spacing: .3rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            #datos-formulario > h2 > span{
+                font-weight: bold;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center full-height">
             <div class="title">
-                <h1>Contacto</h1>
+                <h1>Formulario de contacto</h1>
                 <div class="links">
                     <a href="{{route('home')}}">Home</a>
-                    <a href="{{route('blog.id',['id'=>3])}}">Blog sin nombre</a>
-                    <a href="{{route('blog.name',['id'=>3,'name'=>'Koldo'])}}">Blog con nombre</a>
                 </div>
             </div>
-            <div class="content">
-                <ul>
-                    <li>
-                        <span class="bold">Nombre:</span>
-                        @if(isset($nombre))
-                            {{$nombre}}
-                        @else
-                            Koldo
-                        @endif
-                    </li>
-                    <li>
-                        <span class="bold">Apellido:</span>
-                        @if(isset($apellido))
-                            {{$apellido}}
-                        @else
-                            Intxausti
-                        @endif
-                    </li>
-                    @if(isset($email))
-                        <li><span class="bold">Correo electrónico:</span> {{$email}}</li>
-                    @endif
-                    @if(isset($telefono))
-                        <li><span class="bold">Teléfono:</span> {{$telefono}}</li>
-                    @endif
-                </ul>
-            </div>
+            <form action="{{route('formContacto')}}" method="post">
+                @csrf
+                <h3>Introduzca sus datos de contacto</h3>
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="email" name="email" placeholder="Correo electrónico">
+                <input type="number" name="telefono" placeholder="Teléfono (Opcional)">
+                <input type="submit" value="Enviar">
+            </form>
+            @if(isset($error))
+                <span style="color:tomato; font-weight: bold;">{{$error}}</span>
+            @endif
         </div>
     </body>
 </html>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Koldo Intxausti</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -62,7 +62,7 @@
                     <a href="{{route('contacto')}}">4.1 Rutas y Vistas</a>
                     <a href="{{route('saludar')}}">4.2 Rutas Vista Controlador</a>
                     <a href="{{route('getFormulario')}}">4.3 Formularios</a>
-                    <a href="#">4.4 Formularios con validación</a>
+                    <a href="{{route('getFormularioContacto')}}">4.4 Formularios con validación</a>
                 </div>
             </div>
         </div>

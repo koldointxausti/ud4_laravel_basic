@@ -42,3 +42,5 @@ Route::post('/saludar/post','SaludoController@saludarPost')->name('saludarPost')
 Route::post('/saludar/samePage','SaludoController@saludarSamePage')->name('saludarSamePage');
 
 // 4.4
+Route::get('/formulario-contacto','FormularioController@getFormularioContacto')->name('getFormularioContacto');
+Route::post('/formulario-contacto/post','FormularioController@formContacto')->name('formContacto');

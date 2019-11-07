@@ -94,6 +94,26 @@
             #datos-formulario > h2 > span{
                 font-weight: bold;
             }
+            #error-container{
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .error{
+                flex-basis:calc(30% - 2em);
+                color:white;
+                background-color: tomato; 
+                border-radius: 1em; 
+                padding: .5em 1em; 
+                margin: .5em 0;
+                font-weight: bold;
+                cursor: default;
+                display: flex;
+                align-items: center;
+            }
+            .error:hover{
+                box-shadow: 1px 1px 7px gray;
+            }
         </style>
     </head>
     <body>
@@ -104,17 +124,32 @@
                     <a href="{{route('home')}}">Home</a>
                 </div>
             </div>
-            <form action="{{route('formContacto')}}" method="post">
+
+            <!-- USANDO MIS COMPROBACIONES (formContacto)
+            <form action="{{--route('formContacto')--}}" method="post">-->
+
+            <!-- USANDO LA FUNCIÓN VALIDATE DE LARAVEL (formContacto) -->
+            <form action="{{route('formContactoValidar')}}" method="post">
                 @csrf
                 <h3>Introduzca sus datos de contacto</h3>
-                <input type="text" name="nombre" placeholder="Nombre">
-                <input type="text" name="apellido" placeholder="Apellido">
-                <input type="email" name="email" placeholder="Correo electrónico">
-                <input type="number" name="telefono" placeholder="Teléfono (Opcional)">
+                <input type="text" name="nombre" placeholder="Nombre" value="{{old('nombre')}}">
+                <input type="text" name="apellido" placeholder="Apellido" value="{{old('apellido')}}">
+                <input type="email" name="email" placeholder="Correo electrónico" value="{{old('email')}}">
+                <input type="number" name="telefono" placeholder="Teléfono (Opcional)" value="{{old('telefono')}}">
                 <input type="submit" value="Enviar">
             </form>
+            <!-- USANDO MIS COMPROBACIONES (formContacto) -->
             @if(isset($error))
                 <span style="color:tomato; font-weight: bold;">{{$error}}</span>
+            @endif
+            <!-- USANDO LA FUNCIÓN VALIDATE DE LARAVEL (formContacto) -->
+            @if($errors->any())
+                <h3>Errores</h3>
+                <div id="error-container">
+                    @foreach($errors->all() as $error)
+                        <span class="error">{{$error}}</span>
+                    @endforeach
+                </div>
             @endif
         </div>
     </body>

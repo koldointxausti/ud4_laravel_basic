@@ -43,4 +43,8 @@ Route::post('/saludar/samePage','SaludoController@saludarSamePage')->name('salud
 
 // 4.4
 Route::get('/formulario-contacto','FormularioController@getFormularioContacto')->name('getFormularioContacto');
+
+// USANDO MIS COMPROBACIONES (formContacto)
 Route::post('/formulario-contacto/post','FormularioController@formContacto')->name('formContacto');
+// USANDO LA FUNCIÓN VALIDATE DE LARAVEL (formContacto) -->
+Route::post('/validar-formulario-contacto','FormularioController@formContactoValidar')->name('formContactoValidar');

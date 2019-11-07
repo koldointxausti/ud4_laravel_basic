@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionFormulario;
 
 class FormularioController extends Controller
 {
@@ -11,6 +12,7 @@ class FormularioController extends Controller
     	// devuelve la vista del formulario de contacto
     	return view('formulario_contacto');
     }
+
     function formContacto(Request $request){
     	// hace una comprobación de los datos, y si son correctos, devuelve una vista con esos datos
 
@@ -45,5 +47,20 @@ class FormularioController extends Controller
 
 		}else $error = 'Rellene los campos obligatorios.';
 		return view('formulario_contacto',['error'=>$error]);   	
+    }
+
+    // VALIDACIÓN USANDO "VALIDATE" LARAVEL
+    function formContactoValidar(ValidacionFormulario $request){
+    	
+	    // valida que las reglas se cumplan y si no lo hacen devuelve a la vista anterior con un array $errors con los mensajes que hemos customizado arriba
+    	// $validatedData = $request->validate($rules, $customMessages);
+
+    	// devuelve a la vista contacto con los datos introducidos
+		return view('contacto')->with(
+			'nombre',$request->input('nombre'))->with(
+			'apellido',$request->input('apellido'))->with(
+			'email',$request->input('email'))->with(
+			'telefono',$request->input('telefono')
+		);
     }
 }

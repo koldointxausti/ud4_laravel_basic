@@ -32,7 +32,7 @@ class ValidacionFormulario extends FormRequest
     }
 
     /** 
-     * definimos los mensajes que queremos mostrar al dar error
+     * definimos los mensajes personalizados que queremos mostrar al dar error
      * @return errores personalizados
      */
     public function messages()

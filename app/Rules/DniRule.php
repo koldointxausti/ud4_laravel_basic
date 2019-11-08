@@ -37,6 +37,6 @@ class DniRule implements Rule
      */
     public function message()
     {
-        return 'El formato del DNI no es correcto';
+        return trans('validation.dni');
     }
 }

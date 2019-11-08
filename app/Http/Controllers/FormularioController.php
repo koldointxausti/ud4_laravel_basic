@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionFormulario;
+use App\Rules\DniRule;
 
 class FormularioController extends Controller
 {
@@ -52,8 +53,9 @@ class FormularioController extends Controller
     // VALIDACIÓN USANDO "VALIDATE" LARAVEL
     function formContactoValidar(ValidacionFormulario $request){
     	
-	    // valida que las reglas se cumplan y si no lo hacen devuelve a la vista anterior con un array $errors con los mensajes que hemos customizado arriba
-    	// $validatedData = $request->validate($rules, $customMessages);
+    	$validateDni = $request->validate([
+    		'dni'=>['required', new DniRule]
+    	]);
 
     	// devuelve a la vista contacto con los datos introducidos
 		return view('contacto')->with(

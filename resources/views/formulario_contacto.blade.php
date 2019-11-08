@@ -140,9 +140,9 @@
                 <input type="submit" value="Enviar">
             </form>
             <!-- USANDO MIS COMPROBACIONES (formContacto) -->
-            @if(isset($error))
+            @isset($error)
                 <span style="color:tomato; font-weight: bold;">{{$error}}</span>
-            @endif
+            @endisset
             <!-- USANDO LA FUNCIÓN VALIDATE DE LARAVEL (formContacto) -->
             @if($errors->any())
                 <h3>Errores</h3>

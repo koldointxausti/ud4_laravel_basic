@@ -24,10 +24,11 @@ class ValidacionFormulario extends FormRequest
     public function rules()
     {
         return [
+            'dni'=>'required|regex:/^[0-9]{8}[A-Za-z]$/',
             'nombre'=>'required|min:2|max:15',
             'apellido'=>'required|min:2|max:20',
             'email'=>'required|email',
-            'telefono'=>'nullable|regex:/^[679][0-9]{8}$/'
+            'telefono'=>'nullable|regex:/^[679][0-9]{8}$/',
         ];
     }
 
@@ -39,10 +40,11 @@ class ValidacionFormulario extends FormRequest
     {
         return [
             'required' => 'El campo :attribute es obligatorio.',
+            'dni.regex'=>'El formato :attribute es inválido (00000000A)',
             'min' => 'Debe introducir al menos :min caracteres en el campo :attribute',
             'max' => 'Debe introducir menos de :max caracteres en el campo :attribute',
             'email' => 'El campo :attribute debe ser un correo electrónico',
-            'telefono.regex' => 'Debe introducir 9 dígitos en el campo :attribute'
+            'telefono.regex' => 'El campo :attribute debe contener 9 dígitos y empezar con 6, 7 u 8'
         ];
     }
 

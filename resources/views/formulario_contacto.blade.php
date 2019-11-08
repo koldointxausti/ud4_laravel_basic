@@ -132,6 +132,7 @@
             <form action="{{route('formContactoValidar')}}" method="post">
                 @csrf
                 <h3>Introduzca sus datos de contacto</h3>
+                <input type="text" name="dni" placeholder="DNI" value="{{old('dni')}}">
                 <input type="text" name="nombre" placeholder="Nombre" value="{{old('nombre')}}">
                 <input type="text" name="apellido" placeholder="Apellido" value="{{old('apellido')}}">
                 <input type="email" name="email" placeholder="Correo electrónico" value="{{old('email')}}">

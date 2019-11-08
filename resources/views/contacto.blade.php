@@ -91,6 +91,9 @@
             </div>
             <div class="content">
                 <ul>
+                    @if(isset($dni))
+                        <li><span class="bold">DNI:</span> {{$dni}}</li>
+                    @endif
                     <li>
                         <span class="bold">Nombre:</span>
                         @if(isset($nombre))

@@ -57,6 +57,7 @@ class FormularioController extends Controller
 
     	// devuelve a la vista contacto con los datos introducidos
 		return view('contacto')->with(
+			'dni',$request->input('dni'))->with(
 			'nombre',$request->input('nombre'))->with(
 			'apellido',$request->input('apellido'))->with(
 			'email',$request->input('email'))->with(
